@@ -4,10 +4,12 @@
 - возвращает списки кириллических гласных и согласных
 '''
 
+
 def letters_list(input_string):
     uniq_letters = set(input_string.lower())
     vowels = {'а', 'о', 'е', 'ё', 'и', 'у'}
-    consonants = {'б', 'п', 'в', 'ф', 'д', 'т', 'з', 'с', 'ж', 'ш', 'ч', 'ц', 'щ', 'г', 'к', 'х', 'м', 'н', 'л', 'р'}
+    consonants = {'б', 'п', 'в', 'ф', 'д', 'т', 'з', 'с', 'ж', 'ш',
+                  'ч', 'ц', 'щ', 'г', 'к', 'х', 'м', 'н', 'л', 'р'}
     output_vowels = []
     output_consonants = []
     for i in uniq_letters:
