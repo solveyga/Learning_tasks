@@ -18,4 +18,4 @@ def letters_list(input_string):
     return output_vowels, output_consonants
 
 
-print(letters_list('Тестовая строка'))
+print(letters_list('Тестовая строка со знаком препинания.'))
