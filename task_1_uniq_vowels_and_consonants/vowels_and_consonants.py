@@ -29,7 +29,7 @@ def letters_list(input_value):
         "н",
         "л",
         "р",
-        "й"
+        "й",
     }
     output_vowels = set()
     output_consonants = set()
