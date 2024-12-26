@@ -4,10 +4,9 @@
 - возвращает списки кириллических гласных и согласных
 """
 
-
 def letters_list(input_string):
     uniq_letters = set(input_string.lower())
-    vowels = {"а", "о", "е", "ё", "и", "у"}
+    vowels = {"а", "о", "е", "ё", "и", "у", "ы", "ю", "э", "я"}
     consonants = {
         "б",
         "п",
@@ -29,6 +28,7 @@ def letters_list(input_string):
         "н",
         "л",
         "р",
+        "й"
     }
     output_vowels = set()
     output_consonants = set()
@@ -40,6 +40,6 @@ def letters_list(input_string):
     return output_vowels, output_consonants
 
 
-#output = letters_list("Съешь еще этих мягких французских булок да выпей чаю 1234567890")
+output = letters_list("")
 
-#print(output)
+print(output[0]==set())
