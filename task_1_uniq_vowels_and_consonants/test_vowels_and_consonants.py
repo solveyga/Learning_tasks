@@ -30,7 +30,7 @@ def test_letter_list_no_cyrillyc():
     '''
 
 
-def test_letter_list_big_size():
+def test_letter_list_long_string():
     control_vowels = {'о', 'и', 'е', 'а', 'у', 'ы', 'я', 'э', 'ю', 'ё'}
     control_consonants = {"б", "п", "в", "ф", "д", "т", "з", "с", "ж", "ш", "ч",
                           "ц", "щ", "г", "к", "х", "м", "н", "л", "р", "й"}
