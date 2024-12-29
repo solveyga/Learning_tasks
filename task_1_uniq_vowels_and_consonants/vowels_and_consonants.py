@@ -31,16 +31,27 @@ def letters_list(input_value):
         "р",
         "й",
     }
-    output_vowels = set()
-    output_consonants = set()
+    output_vowels = []
+    output_consonants = []
     for i in uniq_letters:
         if i in vowels:
-            output_vowels.add(i)
+            output_vowels.append(i)
         elif i in consonants:
-            output_consonants.add(i)
-    return output_vowels, output_consonants
+            output_consonants.append(i)
+    output_vowels.sort()
+    output_consonants.sort()
 
+    if output_vowels:
+        vowels_result = f"Список гласных: {', '.join(list(output_vowels))}."
+    elif not output_vowels:
+        vowels_result = "Нет кириллических гласных."
 
-output = letters_list(123.456)
+    if output_consonants:
+        consonants = f"Список согласных: {', '.join(list(output_consonants))}."
+    elif not output_consonants:
+        consonants = "Нет кириллических согласных."
 
-print(output)
+    return f'{vowels_result}\n{consonants}'
+
+print(letters_list("Съешь ещё этих мягких французских булок, да выпей же чаю 1234567890."))
+
