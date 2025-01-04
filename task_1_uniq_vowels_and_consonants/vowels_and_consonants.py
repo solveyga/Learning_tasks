@@ -5,80 +5,102 @@
 """
 
 
-def letters_list(input_value):
-    input_string = str(input_value)
+def letters_in_string(input_value):
+    """
+    Функция принимает строку, проверяет максимально допустимую длину, выбирает из строки уникальные гласные и согласные и возвращает их список пользователю.
+
+    Ключевые аргументы:
+    vowels -- все кириллические гласные
+    consonants -- все кириллические согласные
+    uniq_letters - уникальные буквы в переданной строке
+    vowels_in_string - гласные в переданной строке
+    consonants_in_string - согласные в переданной строке
+    """
+    input_string: str = str(input_value).lower()
     if len(input_string) <= 256:
-            uniq_letters = set(input_string.lower())
-            vowels = {"а", "о", "е", "ё", "и", "у", "ы", "ю", "э", "я"}
-            consonants = {
-                "б",
-                "п",
-                "в",
-                "ф",
-                "д",
-                "т",
-                "з",
-                "с",
-                "ж",
-                "ш",
-                "ч",
-                "ц",
-                "щ",
-                "г",
-                "к",
-                "х",
-                "м",
-                "н",
-                "л",
-                "р",
-                "й",
-                }
-            output_vowels = []
-            output_consonants = []
-            for i in uniq_letters:
-                if i in vowels:
-                    output_vowels.append(i)
-                elif i in consonants:
-                    output_consonants.append(i)
-            output_vowels.sort()
-            output_consonants.sort()
+        uniq_letters: set = set(input_string)
+        vowels: set = {"а", "о", "е", "ё", "и", "у", "ы", "ю", "э", "я"}
+        consonants: set = {
+            "б",
+            "п",
+            "в",
+            "ф",
+            "д",
+            "т",
+            "з",
+            "с",
+            "ж",
+            "ш",
+            "ч",
+            "ц",
+            "щ",
+            "г",
+            "к",
+            "х",
+            "м",
+            "н",
+            "л",
+            "р",
+            "й",
+        }
+        vowels_in_string: list = []
+        consonants_in_string: list = []
+        for i in uniq_letters:
+            if i in vowels:
+                vowels_in_string.append(i)
+            elif i in consonants:
+                consonants_in_string.append(i)
+        vowels_in_string.sort()
+        consonants_in_string.sort()
 
-            if output_vowels:
-                vowels_result = f"Список гласных: {', '.join(list(output_vowels))}."
-            elif not output_vowels:
-                vowels_result = "Нет кириллических гласных."
+        if vowels_in_string:
+            vowels_result: str = f"Список гласных: {', '.join(list(vowels_in_string))}."
+        elif not vowels_in_string:
+            vowels_result: str = "Нет кириллических гласных."
 
-            if output_consonants:
-                consonants = f"Список согласных: {', '.join(list(output_consonants))}."
-            elif not output_consonants:
-                consonants = "Нет кириллических согласных."
+        if consonants_in_string:
+            consonants: str = (
+                f"Список согласных: {', '.join(list(consonants_in_string))}."
+            )
+        elif not consonants_in_string:
+            consonants: str = "Нет кириллических согласных."
 
-            return f"{vowels_result}\n{consonants}"
+        return f"{vowels_result}\n{consonants}"
     else:
         return "Допустимы строки не длиннее 256 символов."
 
 
-#print(letters_list("Съешь ещё этих мягких французских булок, да выпей же чаю."))
+# print(letters_list("Съешь ещё этих мягких французских булок, да выпей же чаю."))
 
 assert (
     f"Список гласных: а, е, и, о, у, ы, э, ю, я, ё.\nСписок согласных: б, в, г, д, ж, з, й, к, л, м, н, п, р, с, т, ф, х, ц, ч, ш, щ."
-    == letters_list("Съешь ещё этих мягких французских булок, да выпей же чаю.")
+    == letters_in_string("Съешь ещё этих мягких французских булок, да выпей же чаю.")
 )
 
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_list("")
+assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
+    ""
+)
 
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_list(
+assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     "The quick brown fox jumps over the lazy dog いろはにほへと 1234567890"
 )
 
-assert f"Список гласных: а, о, у.\nНет кириллических согласных." == letters_list(
+assert f"Список гласных: а, о, у.\nНет кириллических согласных." == letters_in_string(
     "А о у"
 )
 
-assert f"Нет кириллических гласных.\nСписок согласных: г, д, ж." == letters_list("Гд ж")
+assert f"Нет кириллических гласных.\nСписок согласных: г, д, ж." == letters_in_string(
+    "Гд ж"
+)
 
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_list(True)
+assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
+    True
+)
 
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_list(123)
+assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
+    123
+)
 
-assert f'Допустимы строки не длиннее 256 символов.' == letters_list("jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe")
+assert f"Допустимы строки не длиннее 256 символов." == letters_in_string(
+    "jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe"
+)
