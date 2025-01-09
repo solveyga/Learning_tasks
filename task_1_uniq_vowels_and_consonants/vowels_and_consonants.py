@@ -70,35 +70,43 @@ def letters_in_string(input_value):
         return "Допустимы строки не длиннее 256 символов."
 
 
+"""Тест фразы, которая содержит все буквы алфавита. Вернутся все буквы."""
 assert (
     f"Список гласных: а, е, и, о, у, ы, э, ю, я, ё.\nСписок согласных: б, в, г, д, ж, з, й, к, л, м, н, п, р, с, т, ф, х, ц, ч, ш, щ."
     == letters_in_string("Съешь ещё этих мягких французских булок, да выпей же чаю.")
 )
 
+"""Тест пустой строки. Нет искомых букв."""
 assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     ""
 )
 
+"""Тест строки без кириллических символов. Нет искомых букв."""
 assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     "The quick brown fox jumps over the lazy dog いろはにほへと 1234567890"
 )
 
+"""Тест строки с гласными буквами. Вернутся гласные буквы, согласных нет."""
 assert f"Список гласных: а, о, у.\nНет кириллических согласных." == letters_in_string(
     "А о у"
 )
 
+"""Тест строки с согласными буквами. Вернутся согласные буквы, гласных нет."""
 assert f"Нет кириллических гласных.\nСписок согласных: г, д, ж." == letters_in_string(
     "Гд ж"
 )
 
+"""Тест строки с булевым значением. Искомых букв нет."""
 assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     True
 )
 
+"""Тест строки с числовым значением. Искомых букв нет."""
 assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     123
 )
 
+"""Тест слишком длинной строки. Вернется предупреждение о превышении длины"""
 assert f"Допустимы строки не длиннее 256 символов." == letters_in_string(
     "jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe"
 )
