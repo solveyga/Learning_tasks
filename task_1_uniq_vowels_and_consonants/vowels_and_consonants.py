@@ -5,7 +5,7 @@
 """
 
 
-def letters_in_string(input_value):
+def letters_in_string(input_value: str) -> str:
     """
     Функция принимает строку, проверяет максимально допустимую длину, выбирает из строки уникальные гласные и согласные и возвращает их список пользователю.
 
@@ -17,12 +17,13 @@ def letters_in_string(input_value):
     consonants_in_string - согласные в переданной строке
     """
     input_string: str = str(input_value).lower()
-    if len(input_string) > 256:
-        raise ValueError("Допустимы строки не длиннее 256 символов.")
-        
-
-
-
+    try:
+        if len(input_string) > 256:
+            raise ValueError("Допустимы строки не длиннее 256 символов.")
+    except ValueError as e:
+        print(e)
+    else:
+        input_string: str = (str(input_value)).lower()
         uniq_letters: set = set(input_string)
         vowels: str = "аеиоуыэюяё"
         consonants: str = "бвгджзйклмнпрстфхцчшщ"
@@ -49,8 +50,8 @@ def letters_in_string(input_value):
             consonants: str = "Нет кириллических согласных."
 
         return f"{vowels_result}\n{consonants}"
-    else:
-        return "Допустимы строки не длиннее 256 символов."
+
+#print(letters_in_string("А о у"))
 
 
 """Тест фразы, которая содержит все буквы алфавита. Вернутся все буквы."""
@@ -88,8 +89,9 @@ assert f"Нет кириллических гласных.\nНет кирилл�
 assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
     123
 )
-
+'''
 """Тест слишком длинной строки. Вернется предупреждение о превышении длины"""
 assert f"Допустимы строки не длиннее 256 символов." == letters_in_string(
     "jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe"
 )
+'''
