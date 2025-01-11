@@ -17,7 +17,12 @@ def letters_in_string(input_value):
     consonants_in_string - согласные в переданной строке
     """
     input_string: str = str(input_value).lower()
-    if len(input_string) <= 256:
+    if len(input_string) > 256:
+        raise ValueError("Допустимы строки не длиннее 256 символов.")
+        
+
+
+
         uniq_letters: set = set(input_string)
         vowels: str = "аеиоуыэюяё"
         consonants: str = "бвгджзйклмнпрстфхцчшщ"
