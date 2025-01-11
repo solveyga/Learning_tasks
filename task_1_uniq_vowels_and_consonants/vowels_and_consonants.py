@@ -19,30 +19,8 @@ def letters_in_string(input_value):
     input_string: str = str(input_value).lower()
     if len(input_string) <= 256:
         uniq_letters: set = set(input_string)
-        vowels: set = {"а", "о", "е", "ё", "и", "у", "ы", "ю", "э", "я"}
-        consonants: set = {
-            "б",
-            "п",
-            "в",
-            "ф",
-            "д",
-            "т",
-            "з",
-            "с",
-            "ж",
-            "ш",
-            "ч",
-            "ц",
-            "щ",
-            "г",
-            "к",
-            "х",
-            "м",
-            "н",
-            "л",
-            "р",
-            "й",
-        }
+        vowels: str = "аеиоуыэюяё"
+        consonants: str = "бвгджзйклмнпрстфхцчшщ"
         vowels_in_string: list = []
         consonants_in_string: list = []
         for i in uniq_letters:
