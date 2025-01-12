@@ -4,6 +4,8 @@
 - возвращает списки кириллических гласных и согласных
 """
 
+import unittest
+
 
 def letters_in_string(input_value: str) -> str:
     """
@@ -16,12 +18,14 @@ def letters_in_string(input_value: str) -> str:
     vowels_in_string - гласные в переданной строке
     consonants_in_string - согласные в переданной строке
     """
-    input_string: str = str(input_value).lower()
     try:
+        input_string: str = input_value.lower()
         if len(input_string) > 256:
             raise ValueError("Допустимы строки не длиннее 256 символов.")
+    except AttributeError:
+        return "Ожидается строка."
     except ValueError as e:
-        print(e)
+        return e
     else:
         input_string: str = (str(input_value)).lower()
         uniq_letters: set = set(input_string)
@@ -51,8 +55,6 @@ def letters_in_string(input_value: str) -> str:
 
         return f"{vowels_result}\n{consonants}"
 
-#print(letters_in_string("А о у"))
-
 
 """Тест фразы, которая содержит все буквы алфавита. Вернутся все буквы."""
 assert (
@@ -80,18 +82,30 @@ assert f"Нет кириллических гласных.\nСписок сог�
     "Гд ж"
 )
 
+"""Тест слишком длинной строки. Вернется предупреждение о превышении длины"""
+
+
+class TestOverlenght(unittest.TestCase):
+    def test_overlength(self):
+        with self.assertRaises(ValueError):
+            letters_in_string(
+                "jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe"
+            )
+
+
 """Тест строки с булевым значением. Искомых букв нет."""
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
-    True
-)
+
+
+class TestBoolean(unittest.TestCase):
+    def test_boolean(self):
+        with self.assertRaises(AttributeError):
+            letters_in_string(True)
+
 
 """Тест строки с числовым значением. Искомых букв нет."""
-assert f"Нет кириллических гласных.\nНет кириллических согласных." == letters_in_string(
-    123
-)
-'''
-"""Тест слишком длинной строки. Вернется предупреждение о превышении длины"""
-assert f"Допустимы строки не длиннее 256 символов." == letters_in_string(
-    "jvraGUOLARUHJvHZcuMcOzeqWsYugmwwjZGSvRJPVxOciGfmbfbPPyEfyiAGSYTdgppNkdrjGzyxcObtFAbYnCzkuQoPJtdfWaCbWJbuejqvFgnMqeQhenUAZcLJIRKJNjvPeKASymaavUYGTjeJHJGNLpyYvnLJTibYVKEZaFjaWXQIRuAMVBsxeqwrAScgztBbyiSxYqevGLFRXpVqCuKCIPkEMsCCJNFpsMXcKUOdwglUExxTsuhMsmTfFgvGOxIe"
-)
-'''
+
+
+class TestInteger(unittest.TestCase):
+    def test_integer(self):
+        with self.assertRaises(AttributeError):
+            letters_in_string(123)
