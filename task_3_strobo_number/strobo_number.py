@@ -1,17 +1,17 @@
-def is_strobogram_number(number: str) -> bool:
+def is_strobogram_number(num: str) -> bool:
     res: str = ''
     strob_digit = '0689'
-    for i in range(len(number) - 1, -1, -1):
-        if number[i] in strob_digit:
-            if number[i] == '6':
+    for i in range(len(num) - 1, -1, -1):
+        if num[i] in strob_digit:
+            if num[i] == '6':
                 res += '9'
-            elif number[i] == '9':
+            elif num[i] == '9':
                 res += '6'
             else:
-                res += number[i]
+                res += num[i]
         else:
             return False
-    return res == number
+    return res == num
 
 
 print(is_strobogram_number("100"))
