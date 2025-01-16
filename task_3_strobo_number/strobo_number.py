@@ -10,14 +10,14 @@ def is_strobogram_number(num: str) -> bool:
     strobogram_digit - стробограмматические цифры
     """
     try:
-        reverse_number: str = ''
-        strobogram_digit = '0689'
+        reverse_number: str = ""
+        strobogram_digit = "0689"
         for i in range(len(num) - 1, -1, -1):
             if num[i] in strobogram_digit:
-                if num[i] == '6':
-                    reverse_number += '9'
-                elif num[i] == '9':
-                    reverse_number += '6'
+                if num[i] == "6":
+                    reverse_number += "9"
+                elif num[i] == "9":
+                    reverse_number += "6"
                 else:
                     reverse_number += num[i]
             else:
@@ -28,13 +28,16 @@ def is_strobogram_number(num: str) -> bool:
 
 
 """Тест для стробограмматическое число."""
-assert True == is_strobogram_number('86098')
+assert is_strobogram_number("86098")
 
 """Тест для числа, у которого все цифры стробограмматические, но само число не подходит под условие."""
+assert False == is_strobogram_number("806")
 
 """Тест не стробограмматического числа."""
+assert False == is_strobogram_number("9087")
 
-"""Тест для строки с буквами, а не числами."""
+"""Тест для строки, которая не является целым числом."""
+assert False == is_strobogram_number("860.98")
 
 """Тест проверяет обработку integer вместо string(такая ошибка возникнет при попытке итерации)."""
 
