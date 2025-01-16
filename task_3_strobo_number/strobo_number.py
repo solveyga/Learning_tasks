@@ -11,15 +11,14 @@ def is_strobogram_number(num: str) -> bool:
     """
     try:
         reverse_number: str = ""
-        strobogram_digit = "0689"
+        strobogram_digit: str = "018"
         for i in range(len(num) - 1, -1, -1):
             if num[i] in strobogram_digit:
-                if num[i] == "6":
-                    reverse_number += "9"
-                elif num[i] == "9":
-                    reverse_number += "6"
-                else:
-                    reverse_number += num[i]
+                reverse_number += num[i]
+            elif num[i] == "6":
+                reverse_number += "9"
+            elif num[i] == "9":
+                reverse_number += "6"
             else:
                 return False
         return num == reverse_number
@@ -28,10 +27,10 @@ def is_strobogram_number(num: str) -> bool:
 
 
 """Тест для стробограмматическое число."""
-assert is_strobogram_number("86098")
+assert is_strobogram_number("1860981")
 
 """Тест для числа, у которого все цифры стробограмматические, но само число не подходит под условие."""
-assert False == is_strobogram_number("806")
+assert False == is_strobogram_number("8061")
 
 """Тест не стробограмматического числа."""
 assert False == is_strobogram_number("9087")
@@ -39,7 +38,7 @@ assert False == is_strobogram_number("9087")
 """Тест для строки, которая не является целым числом."""
 assert False == is_strobogram_number("860.98")
 
-"""Тест проверяет обработку integer вместо string(такая ошибка возникнет при попытке итерации)."""
+"""Тест проверяет обработку integer вместо string."""
 
 
 class TestInteger(unittest.TestCase):
@@ -50,5 +49,6 @@ class TestInteger(unittest.TestCase):
 
 """
 Вопросы:
-- нужна обработка входных данных? Раз есть условие, что подается строка с числом, я бы сделала только обработку ошибки) 
+1. Нужна ли обработка входных данных? Раз есть условие, что подается строка с числом, я бы сделала только обработку ошибки) 
+2. В решении литкода 1 считается стробограмматической. Я не нашла определения стробограм. цифр в сети, так что это выглядит как допущение.
 """
