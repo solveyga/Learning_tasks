@@ -1,6 +1,7 @@
 import unittest
 import pytest
 
+
 def missingNumber(nums: list) -> str:
     """
     Функция принимает массив чисел, сортирует его, проверяет пропущенное число в диапазоне [0, n] и возвращает его.
@@ -10,7 +11,7 @@ def missingNumber(nums: list) -> str:
     str - ответ с пропущенным числом
     """
     n = len(nums)
-    full_sum = n*(n+1) // 2
+    full_sum = n * (n + 1) // 2
     nums_sum = sum(nums)
     return f"Пропущено число {full_sum - nums_sum}."
 
@@ -38,16 +39,22 @@ assert "Пропущено число 1." == missingNumber([0])
 """
 
 """Тест исключения, в котором передан не массив"""
+
+
 class TestNumber(unittest.TestCase):
     def test_number_instead_list(self):
         with self.assertRaises(AttributeError):
             missingNumber(3)
 
+
 """Тест исключения, в котором передан массив, но его элементы - не числа"""
+
+
 class TestNumber(unittest.TestCase):
     def test_number_instead_list(self):
         with self.assertRaises(TypeError):
             missingNumber([0, 2])
+
 
 """
 Остальные негативные тесты
@@ -67,11 +74,9 @@ assert "Пропущено число 2." == missingNumber([1, 1, 2])
 assert "Пропущено число 0." == missingNumber([])
 
 """Тест массива со значение None."""
+
+
 class TestNone(unittest.TestCase):
     def test_number_instead_list(self):
         with self.assertRaises(TypeError):
             missingNumber([None])
-
-
-
-
